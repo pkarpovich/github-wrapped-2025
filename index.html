@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Wrapped 2025 — @pkarpovich</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --bg-card-hover: rgba(255, 255, 255, 0.06);
+      --accent-cyan: #00f5d4;
+      --accent-purple: #9b5de5;
+      --accent-pink: #f15bb5;
+      --accent-yellow: #fee440;
+      --accent-orange: #ff6b35;
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.6);
+      --text-muted: rgba(255, 255, 255, 0.35);
+      --border: rgba(255, 255, 255, 0.08);
+      --glow-cyan: 0 0 60px rgba(0, 245, 212, 0.3);
+      --glow-purple: 0 0 60px rgba(155, 93, 229, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 230px 80px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 300px 200px, rgba(0, 245, 212, 0.8), transparent),
+        radial-gradient(1px 1px at 350px 150px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 420px 90px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 500px 180px, rgba(155, 93, 229, 0.7), transparent),
+        radial-gradient(2px 2px at 580px 60px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 650px 220px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 720px 140px, rgba(241, 91, 181, 0.6), transparent),
+        radial-gradient(1px 1px at 800px 100px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 880px 250px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 950px 180px, rgba(0, 245, 212, 0.5), transparent);
+      background-size: 1000px 300px;
+      animation: twinkle 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .gradient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.15) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      animation: float1 20s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(155, 93, 229, 0.12) 0%, transparent 70%);
+      bottom: -150px;
+      left: -150px;
+      animation: float2 25s ease-in-out infinite;
+    }
+
+    .orb-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(241, 91, 181, 0.1) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: float3 18s ease-in-out infinite;
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-50px, 50px) scale(1.1); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -40px) scale(1.05); }
+    }
+
+    @keyframes float3 {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.15); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 0 100px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--accent-cyan);
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 10vw, 120px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 50%, var(--accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-year {
+      display: block;
+      font-size: 0.4em;
+      letter-spacing: 12px;
+      color: var(--text-secondary);
+      -webkit-text-fill-color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    .hero-username {
+      font-family: 'Space Mono', monospace;
+      font-size: 20px;
+      color: var(--text-secondary);
+    }
+
+    .stats-hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 80px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp 0.8s ease-out backwards;
+    }
+
+    .stat-card:nth-child(1) { animation-delay: 0.1s; }
+    .stat-card:nth-child(2) { animation-delay: 0.2s; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; }
+    .stat-card:nth-child(4) { animation-delay: 0.4s; }
+    .stat-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .stat-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-8px);
+      border-color: var(--accent-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .stat-number {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section {
+      margin: 100px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .section-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--accent-purple);
+      padding: 6px 12px;
+      background: rgba(155, 93, 229, 0.1);
+      border-radius: 8px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .section-desc {
+      font-size: 26px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+      flex-basis: 100%;
+    }
+
+    .hero-project {
+      background: linear-gradient(135deg, rgba(0, 245, 212, 0.05) 0%, rgba(155, 93, 229, 0.05) 100%);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-project::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(0, 245, 212, 0.1), transparent, rgba(155, 93, 229, 0.1), transparent);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-project-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-project-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+
+    .hero-project-name {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-project-lang {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      color: var(--accent-yellow);
+      margin-bottom: 32px;
+    }
+
+    .hero-project-stat {
+      font-size: 120px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .hero-project-stat-label {
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+
+    .hero-project-percent {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 24px;
+      background: rgba(0, 245, 212, 0.1);
+      border: 1px solid var(--accent-cyan);
+      border-radius: 100px;
+      font-family: 'Space Mono', monospace;
+      font-size: 18px;
+      color: var(--accent-cyan);
+    }
+
+    .repos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .repo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .repo-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateX(8px);
+    }
+
+    .repo-rank {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--text-muted);
+      min-width: 24px;
+    }
+
+    .repo-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .repo-name {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .repo-lang {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .repo-commits {
+      font-family: 'Space Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .chart-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .month-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 200px;
+      padding-top: 20px;
+    }
+
+    .month-bar-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+    }
+
+    .month-bar-wrapper {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .month-bar {
+      width: 100%;
+      max-width: 40px;
+      border-radius: 8px 8px 4px 4px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .month-bar:hover {
+      filter: brightness(1.2);
+      transform: scaleY(1.02);
+    }
+
+    .month-bar::after {
+      content: attr(data-value);
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .month-bar:hover::after {
+      opacity: 1;
+    }
+
+    .month-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .month-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-cyan);
+      margin-top: 4px;
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .insight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .insight-card.cyan::before { background: var(--accent-cyan); }
+    .insight-card.purple::before { background: var(--accent-purple); }
+    .insight-card.pink::before { background: var(--accent-pink); }
+    .insight-card.yellow::before { background: var(--accent-yellow); }
+
+    .insight-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .insight-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .insight-value {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .insight-detail {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .time-chart {
+      display: flex;
+      gap: 4px;
+      height: 120px;
+      align-items: flex-end;
+    }
+
+    .hour-bar {
+      flex: 1;
+      border-radius: 4px 4px 2px 2px;
+      min-width: 8px;
+      transition: all 0.3s;
+    }
+
+    .hour-bar:hover {
+      filter: brightness(1.3);
+    }
+
+    .time-periods {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .time-period {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background: var(--bg-card);
+      border-radius: 16px;
+      transition: all 0.3s;
+    }
+
+    .time-period:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .time-period.highlight {
+      border: 1px solid var(--accent-pink);
+      box-shadow: 0 0 30px rgba(241, 91, 181, 0.2);
+    }
+
+    .time-period-bar {
+      width: 60px;
+      border-radius: 8px;
+      min-height: 20px;
+    }
+
+    .time-period-info {
+      text-align: center;
+    }
+
+    .time-period-label {
+      display: block;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .time-period-range {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .time-period-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .time-period-percent {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .time-period.highlight .time-period-value {
+      color: var(--accent-pink);
+    }
+
+    .weekday-chart {
+      display: flex;
+      gap: 12px;
+    }
+
+    .weekday-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .weekday-bar {
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .weekday-fill {
+      width: 100%;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .weekday-fill:hover {
+      filter: brightness(1.2);
+    }
+
+    .weekday-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .weekday-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .new-projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .new-project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+
+    .new-project-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-purple);
+      box-shadow: var(--glow-purple);
+    }
+
+    .new-project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .new-project-name {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .new-project-lang {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(155, 93, 229, 0.15);
+      color: var(--accent-purple);
+    }
+
+    .new-project-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .turtle-universe {
+      background: linear-gradient(135deg, rgba(0, 245, 212, 0.03) 0%, rgba(155, 93, 229, 0.03) 100%);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .turtle-icon {
+      font-size: 80px;
+      margin-bottom: 24px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .turtle-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+
+    .turtle-projects {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .turtle-project {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border-radius: 12px;
+    }
+
+    .turtle-project-name {
+      flex: 1;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .turtle-project-bar {
+      flex: 2;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .turtle-project-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    }
+
+    .turtle-project-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--accent-cyan);
+      min-width: 50px;
+      text-align: right;
+    }
+
+    .turtle-total {
+      margin-top: 32px;
+      padding: 20px;
+      background: rgba(0, 245, 212, 0.1);
+      border-radius: 16px;
+    }
+
+    .turtle-total-value {
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .turtle-total-label {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--border);
+      margin-top: 100px;
+    }
+
+    .footer-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .footer-year {
+      font-size: 64px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    /* Scroll animations */
+    .section {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered animations for children */
+    .section.visible .stat-card,
+    .section.visible .repo-card,
+    .section.visible .insight-card,
+    .section.visible .new-project-card,
+    .section.visible .time-period,
+    .section.visible .turtle-project {
+      animation: slideUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section.visible .repo-card:nth-child(1) { animation-delay: 0.05s; }
+    .section.visible .repo-card:nth-child(2) { animation-delay: 0.1s; }
+    .section.visible .repo-card:nth-child(3) { animation-delay: 0.15s; }
+    .section.visible .repo-card:nth-child(4) { animation-delay: 0.2s; }
+    .section.visible .repo-card:nth-child(5) { animation-delay: 0.25s; }
+    .section.visible .repo-card:nth-child(6) { animation-delay: 0.3s; }
+    .section.visible .repo-card:nth-child(7) { animation-delay: 0.35s; }
+    .section.visible .repo-card:nth-child(8) { animation-delay: 0.4s; }
+    .section.visible .repo-card:nth-child(9) { animation-delay: 0.45s; }
+    .section.visible .repo-card:nth-child(10) { animation-delay: 0.5s; }
+
+    .section.visible .insight-card:nth-child(1) { animation-delay: 0.1s; }
+    .section.visible .insight-card:nth-child(2) { animation-delay: 0.2s; }
+    .section.visible .insight-card:nth-child(3) { animation-delay: 0.3s; }
+    .section.visible .insight-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .section.visible .time-period:nth-child(1) { animation-delay: 0.1s; }
+    .section.visible .time-period:nth-child(2) { animation-delay: 0.2s; }
+    .section.visible .time-period:nth-child(3) { animation-delay: 0.3s; }
+    .section.visible .time-period:nth-child(4) { animation-delay: 0.4s; }
+
+    .section.visible .new-project-card:nth-child(1) { animation-delay: 0.05s; }
+    .section.visible .new-project-card:nth-child(2) { animation-delay: 0.1s; }
+    .section.visible .new-project-card:nth-child(3) { animation-delay: 0.15s; }
+    .section.visible .new-project-card:nth-child(4) { animation-delay: 0.2s; }
+    .section.visible .new-project-card:nth-child(5) { animation-delay: 0.25s; }
+    .section.visible .new-project-card:nth-child(6) { animation-delay: 0.3s; }
+    .section.visible .new-project-card:nth-child(7) { animation-delay: 0.35s; }
+    .section.visible .new-project-card:nth-child(8) { animation-delay: 0.4s; }
+
+    .section.visible .turtle-project:nth-child(1) { animation-delay: 0.1s; }
+    .section.visible .turtle-project:nth-child(2) { animation-delay: 0.2s; }
+    .section.visible .turtle-project:nth-child(3) { animation-delay: 0.3s; }
+    .section.visible .turtle-project:nth-child(4) { animation-delay: 0.4s; }
+    .section.visible .turtle-project:nth-child(5) { animation-delay: 0.5s; }
+
+    /* Bar grow animation */
+    .section.visible .month-bar,
+    .section.visible .weekday-fill,
+    .section.visible .time-period-bar {
+      animation: growBar 1s ease-out forwards;
+      transform-origin: bottom;
+    }
+
+    @keyframes growBar {
+      from {
+        transform: scaleY(0);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    /* Glow pulse for highlight elements */
+    .hero-project-stat {
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        text-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(0, 245, 212, 0.3);
+      }
+    }
+
+    /* Number counter effect */
+    .stat-number {
+      animation: countPop 0.6s ease-out;
+    }
+
+    @keyframes countPop {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      70% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 16px 60px;
+      }
+
+      .hero {
+        padding: 40px 0 60px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        letter-spacing: -1px;
+      }
+
+      .stats-hero {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .stat-card {
+        padding: 24px 16px;
+      }
+
+      .stat-number {
+        font-size: 36px;
+      }
+
+      .stat-label {
+        font-size: 11px;
+      }
+
+      .section {
+        margin: 60px 0;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .section-desc {
+        font-size: 18px;
+      }
+
+      /* Monthly Activity */
+      .month-chart {
+        gap: 4px;
+        height: 150px;
+      }
+
+      .month-label {
+        font-size: 10px;
+      }
+
+      .month-count {
+        font-size: 9px;
+      }
+
+      .month-bar {
+        max-width: 24px;
+      }
+
+      /* Time of Day */
+      .time-periods {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .time-period {
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .time-period-bar {
+        width: 40px;
+      }
+
+      .time-period-label {
+        font-size: 14px;
+      }
+
+      .time-period-range {
+        font-size: 10px;
+      }
+
+      .time-period-value {
+        font-size: 22px;
+      }
+
+      .time-period-percent {
+        font-size: 12px;
+      }
+
+      /* Day of Week */
+      .weekday-chart {
+        gap: 6px;
+      }
+
+      .weekday-bar {
+        height: 100px;
+      }
+
+      .weekday-label {
+        font-size: 11px;
+      }
+
+      .weekday-value {
+        font-size: 12px;
+      }
+
+      /* Repos grid */
+      .repos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Insights */
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .insight-value {
+        font-size: 28px;
+      }
+
+      /* New projects */
+      .new-projects {
+        grid-template-columns: 1fr;
+      }
+
+      /* Hero project */
+      .hero-project {
+        padding: 40px 24px;
+      }
+
+      .hero-project-name {
+        font-size: 32px;
+      }
+
+      .hero-project-stat {
+        font-size: 80px;
+      }
+
+      /* Turtle universe */
+      .turtle-universe {
+        padding: 32px 20px;
+      }
+
+      .turtle-title {
+        font-size: 20px;
+      }
+
+      .turtle-project {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+
+      .turtle-project-name {
+        font-size: 14px;
+      }
+
+      .turtle-total-value {
+        font-size: 36px;
+      }
+
+      .footer-year {
+        font-size: 48px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .time-periods {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-project-stat {
+        font-size: 64px;
+      }
+
+      .month-chart {
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+
+      .weekday-chart {
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
+
+  <div class="container">
+    <header class="hero">
+      <div class="hero-badge">GitHub Wrapped</div>
+      <h1>
+        Your Year in Code
+        <span class="hero-year">2025</span>
+      </h1>
+      <p class="hero-username">@pkarpovich</p>
+    </header>
+
+    <section class="stats-hero">
+      <div class="stat-card">
+        <div class="stat-number">1,045</div>
+        <div class="stat-label">Contributions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">868</div>
+        <div class="stat-label">Commits</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">215</div>
+        <div class="stat-label">Coding Days</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">20</div>
+        <div class="stat-label">Repositories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8</div>
+        <div class="stat-label">New Projects</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Project of the Year</h2>
+        <p class="section-desc">The repository that dominated your 2025</p>
+      </div>
+      <div class="hero-project">
+        <div class="hero-project-content">
+          <div class="hero-project-icon">🐢</div>
+          <div class="hero-project-name">turtle-hub</div>
+          <div class="hero-project-lang">Python</div>
+          <div class="hero-project-stat">575</div>
+          <div class="hero-project-stat-label">commits</div>
+          <div class="hero-project-percent">66% of all code</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">All Repositories</h2>
+        <p class="section-desc">Your top 10 most active repos by commit count</p>
+      </div>
+      <div class="repos-grid">
+        <div class="repo-card">
+          <span class="repo-rank">1</span>
+          <div class="repo-info">
+            <div class="repo-name">turtle-hub</div>
+            <div class="repo-lang">Python</div>
+          </div>
+          <span class="repo-commits">575</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">2</span>
+          <div class="repo-info">
+            <div class="repo-name">home-environment</div>
+            <div class="repo-lang">CSS</div>
+          </div>
+          <span class="repo-commits">58</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">3</span>
+          <div class="repo-info">
+            <div class="repo-name">environment</div>
+            <div class="repo-lang">Python</div>
+          </div>
+          <span class="repo-commits">40</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">4</span>
+          <div class="repo-info">
+            <div class="repo-name">turtle-harbor</div>
+            <div class="repo-lang">Rust</div>
+          </div>
+          <span class="repo-commits">31</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">5</span>
+          <div class="repo-info">
+            <div class="repo-name">playlist-synchronizer</div>
+            <div class="repo-lang">TypeScript</div>
+          </div>
+          <span class="repo-commits">23</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">6</span>
+          <div class="repo-info">
+            <div class="repo-name">little-turtle</div>
+            <div class="repo-lang">Python</div>
+          </div>
+          <span class="repo-commits">22</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">7</span>
+          <div class="repo-info">
+            <div class="repo-name">ff7-remake-game-script</div>
+            <div class="repo-lang">TypeScript</div>
+          </div>
+          <span class="repo-commits">21</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">8</span>
+          <div class="repo-info">
+            <div class="repo-name">omni-turtle-search</div>
+            <div class="repo-lang">TypeScript</div>
+          </div>
+          <span class="repo-commits">16</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">9</span>
+          <div class="repo-info">
+            <div class="repo-name">retribution</div>
+            <div class="repo-lang">TypeScript</div>
+          </div>
+          <span class="repo-commits">13</span>
+        </div>
+        <div class="repo-card">
+          <span class="repo-rank">10</span>
+          <div class="repo-info">
+            <div class="repo-name">genai-widgets</div>
+            <div class="repo-lang">TypeScript</div>
+          </div>
+          <span class="repo-commits">10</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Monthly Activity</h2>
+        <p class="section-desc">June was on fire — your most productive month</p>
+      </div>
+      <div class="chart-container">
+        <div class="month-chart">
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 47%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="68"></div>
+            </div>
+            <span class="month-label">Jan</span>
+            <span class="month-count">68</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 99%; background: linear-gradient(180deg, var(--accent-pink), var(--accent-purple));" data-value="144"></div>
+            </div>
+            <span class="month-label">Feb</span>
+            <span class="month-count">144</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 48%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="70"></div>
+            </div>
+            <span class="month-label">Mar</span>
+            <span class="month-count">70</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 43%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="63"></div>
+            </div>
+            <span class="month-label">Apr</span>
+            <span class="month-count">63</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 66%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="97"></div>
+            </div>
+            <span class="month-label">May</span>
+            <span class="month-count">97</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 100%; background: linear-gradient(180deg, var(--accent-yellow), var(--accent-orange));" data-value="146"></div>
+            </div>
+            <span class="month-label">Jun</span>
+            <span class="month-count">146</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 47%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="68"></div>
+            </div>
+            <span class="month-label">Jul</span>
+            <span class="month-count">68</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 17%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="25"></div>
+            </div>
+            <span class="month-label">Aug</span>
+            <span class="month-count">25</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 14%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="21"></div>
+            </div>
+            <span class="month-label">Sep</span>
+            <span class="month-count">21</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 27%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="40"></div>
+            </div>
+            <span class="month-label">Oct</span>
+            <span class="month-count">40</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 62%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="91"></div>
+            </div>
+            <span class="month-label">Nov</span>
+            <span class="month-count">91</span>
+          </div>
+          <div class="month-bar-container">
+            <div class="month-bar-wrapper">
+              <div class="month-bar" style="height: 24%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));" data-value="35"></div>
+            </div>
+            <span class="month-label">Dec</span>
+            <span class="month-count">35</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Your Style</h2>
+        <p class="section-desc">The patterns that define how you code</p>
+      </div>
+      <div class="insights-grid">
+        <div class="insight-card cyan">
+          <div class="insight-icon">🦉</div>
+          <div class="insight-title">Night Owl</div>
+          <div class="insight-value">45%</div>
+          <div class="insight-detail">commits after 10 PM</div>
+        </div>
+        <div class="insight-card purple">
+          <div class="insight-icon">🎮</div>
+          <div class="insight-title">Weekend Warrior</div>
+          <div class="insight-value">43%</div>
+          <div class="insight-detail">commits on weekends</div>
+        </div>
+        <div class="insight-card pink">
+          <div class="insight-icon">🔥</div>
+          <div class="insight-title">Best Day</div>
+          <div class="insight-value">June 21</div>
+          <div class="insight-detail">26 commits in one day</div>
+        </div>
+        <div class="insight-card yellow">
+          <div class="insight-icon">⚡</div>
+          <div class="insight-title">Longest Streak</div>
+          <div class="insight-value">13 days</div>
+          <div class="insight-detail">May 16-28</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Time of Day</h2>
+        <p class="section-desc">When inspiration strikes — mostly after dark</p>
+      </div>
+      <div class="chart-container">
+        <div class="time-periods">
+          <div class="time-period">
+            <div class="time-period-bar" style="height: 15%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));"></div>
+            <div class="time-period-info">
+              <span class="time-period-label">Morning</span>
+              <span class="time-period-range">8am - 12pm</span>
+            </div>
+            <span class="time-period-value">57</span>
+            <span class="time-period-percent">7%</span>
+          </div>
+          <div class="time-period">
+            <div class="time-period-bar" style="height: 48%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));"></div>
+            <div class="time-period-info">
+              <span class="time-period-label">Afternoon</span>
+              <span class="time-period-range">12pm - 6pm</span>
+            </div>
+            <span class="time-period-value">190</span>
+            <span class="time-period-percent">22%</span>
+          </div>
+          <div class="time-period">
+            <div class="time-period-bar" style="height: 57%; background: linear-gradient(180deg, var(--accent-purple), var(--accent-pink));"></div>
+            <div class="time-period-info">
+              <span class="time-period-label">Evening</span>
+              <span class="time-period-range">6pm - 10pm</span>
+            </div>
+            <span class="time-period-value">226</span>
+            <span class="time-period-percent">26%</span>
+          </div>
+          <div class="time-period highlight">
+            <div class="time-period-bar" style="height: 100%; background: linear-gradient(180deg, var(--accent-pink), var(--accent-orange));"></div>
+            <div class="time-period-info">
+              <span class="time-period-label">Night Owl</span>
+              <span class="time-period-range">10pm - 2am</span>
+            </div>
+            <span class="time-period-value">395</span>
+            <span class="time-period-percent">45%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Day of Week</h2>
+        <p class="section-desc">Saturdays are for shipping — weekends rule</p>
+      </div>
+      <div class="chart-container">
+        <div class="weekday-chart">
+          <div class="weekday-item">
+            <div class="weekday-bar">
+              <div class="weekday-fill" style="height: 53%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));"></div>
+            </div>
+            <div class="weekday-label">Mon</div>
+            <div class="weekday-value">104</div>
+          </div>
+          <div class="weekday-item">
+            <div class="weekday-bar">
+              <div class="weekday-fill" style="height: 50%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));"></div>
+            </div>
+            <div class="weekday-label">Tue</div>
+            <div class="weekday-value">99</div>
+          </div>
+          <div class="weekday-item">
+            <div class="weekday-bar">
+              <div class="weekday-fill" style="height: 61%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));"></div>
+            </div>
+            <div class="weekday-label">Wed</div>
+            <div class="weekday-value">120</div>
+          </div>
+          <div class="weekday-item">
+            <div class="weekday-bar">
+              <div class="weekday-fill" style="height: 43%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));"></div>
+            </div>
+            <div class="weekday-label">Thu</div>
+            <div class="weekday-value">85</div>
+          </div>
+          <div class="weekday-item">
+            <div class="weekday-bar">
+              <div class="weekday-fill" style="height: 44%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));"></div>
+            </div>
+            <div class="weekday-label">Fri</div>
+            <div class="weekday-value">87</div>
+          </div>
+          <div class="weekday-item">
+            <div class="weekday-bar">
+              <div class="weekday-fill" style="height: 100%; background: linear-gradient(180deg, var(--accent-pink), var(--accent-orange));"></div>
+            </div>
+            <div class="weekday-label">Sat</div>
+            <div class="weekday-value">198</div>
+          </div>
+          <div class="weekday-item">
+            <div class="weekday-bar">
+              <div class="weekday-fill" style="height: 88%; background: linear-gradient(180deg, var(--accent-pink), var(--accent-purple));"></div>
+            </div>
+            <div class="weekday-label">Sun</div>
+            <div class="weekday-value">175</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">07</span>
+        <h2 class="section-title">New Projects</h2>
+        <p class="section-desc">Fresh ideas that came to life in 2025</p>
+      </div>
+      <div class="new-projects">
+        <div class="new-project-card">
+          <div class="new-project-header">
+            <span class="new-project-name">turtle-harbor</span>
+            <span class="new-project-lang">Rust</span>
+          </div>
+          <div class="new-project-date">January 2025</div>
+        </div>
+        <div class="new-project-card">
+          <div class="new-project-header">
+            <span class="new-project-name">turtle-hub-portal</span>
+            <span class="new-project-lang">Swift</span>
+          </div>
+          <div class="new-project-date">January 2025</div>
+        </div>
+        <div class="new-project-card">
+          <div class="new-project-header">
+            <span class="new-project-name">yafetch</span>
+            <span class="new-project-lang">Rust</span>
+          </div>
+          <div class="new-project-date">January 2025</div>
+        </div>
+        <div class="new-project-card">
+          <div class="new-project-header">
+            <span class="new-project-name">nrpc</span>
+            <span class="new-project-lang">Go</span>
+          </div>
+          <div class="new-project-date">January 2025</div>
+        </div>
+        <div class="new-project-card">
+          <div class="new-project-header">
+            <span class="new-project-name">ff7-remake-game-script</span>
+            <span class="new-project-lang">TypeScript</span>
+          </div>
+          <div class="new-project-date">February 2025</div>
+        </div>
+        <div class="new-project-card">
+          <div class="new-project-header">
+            <span class="new-project-name">genai-widgets</span>
+            <span class="new-project-lang">TypeScript</span>
+          </div>
+          <div class="new-project-date">February 2025</div>
+        </div>
+        <div class="new-project-card">
+          <div class="new-project-header">
+            <span class="new-project-name">streamdeck-sonos</span>
+            <span class="new-project-lang">TypeScript</span>
+          </div>
+          <div class="new-project-date">March 2025</div>
+        </div>
+        <div class="new-project-card">
+          <div class="new-project-header">
+            <span class="new-project-name">retribution</span>
+            <span class="new-project-lang">TypeScript</span>
+          </div>
+          <div class="new-project-date">November 2025</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-number">08</span>
+        <h2 class="section-title">The turtle-* Universe</h2>
+        <p class="section-desc">Your interconnected ecosystem of turtle projects</p>
+      </div>
+      <div class="turtle-universe">
+        <div class="turtle-icon">🐢</div>
+        <h3 class="turtle-title">75% of your code is in turtle projects</h3>
+        <div class="turtle-projects">
+          <div class="turtle-project">
+            <span class="turtle-project-name">turtle-hub</span>
+            <div class="turtle-project-bar">
+              <div class="turtle-project-fill" style="width: 88%;"></div>
+            </div>
+            <span class="turtle-project-count">575</span>
+          </div>
+          <div class="turtle-project">
+            <span class="turtle-project-name">turtle-harbor</span>
+            <div class="turtle-project-bar">
+              <div class="turtle-project-fill" style="width: 4.7%;"></div>
+            </div>
+            <span class="turtle-project-count">31</span>
+          </div>
+          <div class="turtle-project">
+            <span class="turtle-project-name">little-turtle</span>
+            <div class="turtle-project-bar">
+              <div class="turtle-project-fill" style="width: 3.4%;"></div>
+            </div>
+            <span class="turtle-project-count">22</span>
+          </div>
+          <div class="turtle-project">
+            <span class="turtle-project-name">omni-turtle-search</span>
+            <div class="turtle-project-bar">
+              <div class="turtle-project-fill" style="width: 2.4%;"></div>
+            </div>
+            <span class="turtle-project-count">16</span>
+          </div>
+          <div class="turtle-project">
+            <span class="turtle-project-name">turtle-hub-portal</span>
+            <div class="turtle-project-bar">
+              <div class="turtle-project-fill" style="width: 1.5%;"></div>
+            </div>
+            <span class="turtle-project-count">10</span>
+          </div>
+        </div>
+        <div class="turtle-total">
+          <div class="turtle-total-value">654</div>
+          <div class="turtle-total-label">commits in turtle projects</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-year">2025</div>
+      <p class="footer-text">github.com/pkarpovich</p>
+    </footer>
+  </div>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all sections
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Animate stats hero on load
+    document.querySelector('.stats-hero')?.classList.add('visible');
+  </script>
+</body>
+</html>
